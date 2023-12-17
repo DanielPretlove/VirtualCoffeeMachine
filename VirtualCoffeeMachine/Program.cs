@@ -126,7 +126,7 @@ public class Program
             while(totalChange != 0)
             {
                 // loop through the avaliable coins 
-                foreach (var validCoins in Coins.Where(n => n.Accept == true))
+                foreach (var validCoins in Coins.Where(n => n.Accept == true).OrderByDescending(n => n.Value))
                 {
                     // decrease the totalChange when any of the validCoin values is less the totalChange
                     if(validCoins.Value <= totalChange)
