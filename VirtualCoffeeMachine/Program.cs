@@ -27,32 +27,40 @@ public class Program
         }
 
         Console.Write("\nSelect your Coffee: ");
-        int input = Convert.ToInt32(Console.ReadLine());
-        // select a coffee option by input
-        switch (input)
+        try
         {
-            case 0:
-                Environment.Exit(0);
-                break;
-            case 1:
-                Console.WriteLine($"Customer Selected {CoffeeOptions[0].Name}");
-                PayForCoffee(CoffeeOptions[0], CoinOptions);
-                await CappuccinoInstructions();
-                break;
-            case 2:
-                Console.WriteLine($"Customer Selected {CoffeeOptions[1].Name}");
-                PayForCoffee(CoffeeOptions[1], CoinOptions);
-                await LatteInstructions();
-                break;
-            case 3:
-                Console.WriteLine($"Customer Selected {CoffeeOptions[2].Name}");
-                PayForCoffee(CoffeeOptions[2], CoinOptions);
-                await DecafInstructions();
-                break;
-            default:
-                Console.WriteLine("Input Coffee Option");
-                await CoffeeMenu(CoffeeOptions, CoinOptions);
-                break;
+            int input = Convert.ToInt32(Console.ReadLine());
+            // select a coffee option by input
+            switch (input)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    Console.WriteLine($"Customer Selected {CoffeeOptions[0].Name}");
+                    PayForCoffee(CoffeeOptions[0], CoinOptions);
+                    await CappuccinoInstructions();
+                    break;
+                case 2:
+                    Console.WriteLine($"Customer Selected {CoffeeOptions[1].Name}");
+                    PayForCoffee(CoffeeOptions[1], CoinOptions);
+                    await LatteInstructions();
+                    break;
+                case 3:
+                    Console.WriteLine($"Customer Selected {CoffeeOptions[2].Name}");
+                    PayForCoffee(CoffeeOptions[2], CoinOptions);
+                    await DecafInstructions();
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input");
+                    await CoffeeMenu(CoffeeOptions, CoinOptions);
+                    break;
+            }
+        }
+
+        catch(Exception ex) 
+        { 
+            await CoffeeMenu(CoffeeOptions, CoinOptions);
         }
     }
 
@@ -77,43 +85,53 @@ public class Program
         {
             Console.Write("\nInsert Coin: ");
             int input = Convert.ToInt32(Console.ReadLine());
-            switch (input)
+            try
             {
-                case 0:
-                    Environment.Exit(0);
-                    break;
-                case 1:
-                    Console.WriteLine("This machine does not take 1 cent coins");
-                    break;
-                case 2:
-                    Console.WriteLine("This machine does not take 2 cent coins");
-                    break;
-                case 3:
-                    totalCoins = totalCoins + Coins[2].Value;
-                    Console.WriteLine("Price Inserted: {0:cc}", totalCoins);
-                    break;
-                case 4:
-                    totalCoins = totalCoins + Coins[3].Value;
-                    Console.WriteLine("Price Inserted: {0:c}", totalCoins);
-                    break;
-                case 5:
-                    totalCoins = totalCoins + Coins[4].Value;
-                    Console.WriteLine("Price Inserted: {0:c}", totalCoins);
-                    break;
-                case 6:
-                    totalCoins = totalCoins + Coins[5].Value;
-                    Console.WriteLine("Price Inserted: {0:c}", totalCoins);
-                    break;
-                case 7:
-                    totalCoins = totalCoins + Coins[6].Value;
-                    Console.WriteLine("Price Inserted: {0:c}", totalCoins);
-                    break;
-                case 8:
-                    totalCoins = totalCoins + Coins[7].Value;
-                    Console.WriteLine("Price Inserted: {0:c}", totalCoins);
-                    break;
-                default:
-                    break;
+
+                switch (input)
+                {
+                    case 0:
+                        Environment.Exit(0);
+                        break;
+                    case 1:
+                        Console.WriteLine("This machine does not take 1 cent coins");
+                        break;
+                    case 2:
+                        Console.WriteLine("This machine does not take 2 cent coins");
+                        break;
+                    case 3:
+                        totalCoins = totalCoins + Coins[2].Value;
+                        Console.WriteLine("Price Inserted: {0:cc}", totalCoins);
+                        break;
+                    case 4:
+                        totalCoins = totalCoins + Coins[3].Value;
+                        Console.WriteLine("Price Inserted: {0:c}", totalCoins);
+                        break;
+                    case 5:
+                        totalCoins = totalCoins + Coins[4].Value;
+                        Console.WriteLine("Price Inserted: {0:c}", totalCoins);
+                        break;
+                    case 6:
+                        totalCoins = totalCoins + Coins[5].Value;
+                        Console.WriteLine("Price Inserted: {0:c}", totalCoins);
+                        break;
+                    case 7:
+                        totalCoins = totalCoins + Coins[6].Value;
+                        Console.WriteLine("Price Inserted: {0:c}", totalCoins);
+                        break;
+                    case 8:
+                        totalCoins = totalCoins + Coins[7].Value;
+                        Console.WriteLine("Price Inserted: {0:c}", totalCoins);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
+            }
+
+            catch(Exception ex)
+            {
+                Console.WriteLine("Invalid Input");
             }
         }
 
